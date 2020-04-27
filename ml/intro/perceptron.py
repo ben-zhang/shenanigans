@@ -9,6 +9,9 @@ class perceptron:
         self.m = pos.shape[1] # pos is a n x m matrix. Each row is a different sample.
         self.w = np.random.rand(1, self.m) # make w a row vector for easy adding
 
+    """ Adjust weight vector based on positive and negative values. 
+        Perceptron convergence for linearly separable functions is proven to always occur.
+    """
     def adjust_pos(self):
         post_dot = np.dot(self.w, self.pos)
         for i in range(self.num_pos):
@@ -25,10 +28,16 @@ class perceptron:
                 return False
         return True
 
+    """
+         Train until we can split positive and negative data using a hyperplane
+    """
     def train(self):
         while(not adjust_pos() or not adjust_neg()):
             pass
 
+    """
+        Check the dot product of the weights with any data to categorize as positive/negative
+    """
     def classify(self, datum):
         return np.dot(self.w, datum) >= 0
 
